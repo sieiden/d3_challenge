@@ -175,18 +175,18 @@ function updateToolTip(chosenXAxis, circlesGroup) {
     // append initial circles
         var circlesGroup = circlesGroupAll
             .append("circle")
+            .classed("stateCircle", true)
             .attr("cx", d => xLinearScale(d[chosenXAxis]))
             .attr("cy", d => yLinearScale(d.healthcare))
-            .attr("r", 20)
-            .attr("fill", "pink")
-            .attr("opacity", ".5");
+            .attr("r", 15)
 
     // added by Erin - I wanted to add text to the circles - probably several ways of doing this but here is one.
     // data is bound to ciclesGroupAll like above and now I add a text element at "x" and "y", not the difference from above.
     // added round function to make the numbers in the cirlces have no decimals; this is a random data selection; I just wanted something inside the circles. If you want to see why these values are like they are then you need to back-calculate what xScale and transpose is doing
         var textcirclesGroup = circlesGroupAll
             .append("text")
-            .text((d) => Math.round(xLinearScale(d[chosenXAxis])))
+            .classed("stateText", true)
+            .text((d)=>d.abbr)
             .attr("x", d => xLinearScale(d[chosenXAxis]))
             .attr("y", d => yLinearScale(d.healthcare))
 
