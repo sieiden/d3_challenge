@@ -249,27 +249,26 @@ d3.csv("assets/data/data.csv").then(function(healthData, err) {
     var yLabelsGroup = chartGroup.append("g")
         .attr("transform", "rotate(-90)")
         .attr("y", 0 - margin.left)
-        .attr("x", 0 - (height / 2))
         .attr("dy", "1em")
         .classed("axis-text", true)
 
     var healthcareLabel = yLabelsGroup.append("text")
-        // .attr("x", 60)
-        // .attr("y", 0)
+        .attr("x", 0-(height/2))
+        .attr("y", -40)
         .attr("value", "healthcare") // value to grab for event listener
         .classed("active", true)
         .text("Lacks Healthcare(%)");
 
     var smokesLabel = yLabelsGroup.append("text")
-        // .attr("x", 40)
-        // .attr("y", 0)
+        .attr("x", 0-(height/2))
+        .attr("y", -60)
         .attr("value", "smokes") // value to grab for event listener
         .classed("inactive", true)
         .text("Smokes (%)");
 
     var obesityLabel = yLabelsGroup.append("text")
-        // .attr("x", 60)
-        // .attr("y", 0)
+        .attr("x", 0-(height/2))
+        .attr("y", -80)
         .attr("value", "obesity") // value to grab for event listener
         .classed("inactive", true)
         .text("Obese (%)");
@@ -381,36 +380,36 @@ d3.csv("assets/data/data.csv").then(function(healthData, err) {
             circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
 
             // changes classes to change bold text
-            if (chosenXAxis === "age") {
-                ageLabel
+            if (chosenYAxis === "smokes") {
+                smokesLabel
                     .classed("active", true)
                     .classed("inactive", false);
-                povertyLabel
+                healthcareLabel
                     .classed("active", false)
                     .classed("inactive", true);
-                incomeLabel
+                obesityLabel
                     .classed("active", false)
                     .classed("inactive", true);
             }
-            else if (chosenXAxis === "poverty"){
-                ageLabel
+            else if (chosenYAxis === "healthcare"){
+                smokesLabel
                     .classed("active", false)
                     .classed("inactive", true);
-                povertyLabel
+                healthcareLabel
                     .classed("active", true)
                     .classed("inactive", false);
-                incomeLabel
+                obesityLabel
                     .classed("active", false)
                     .classed("inactive", true);
             }
-            else if (chosenXAxis === "income"){
-                ageLabel
+            else if (chosenYAxis === "obesity"){
+                smokesLabel
                     .classed("active", false)
                     .classed("inactive", true);
-                povertyLabel
+                healthcareLabel
                     .classed("active", false)
                     .classed("inactive", true);
-                incomeLabel
+                obesityLabel
                     .classed("active", true)
                     .classed("inactive", false);
             }
