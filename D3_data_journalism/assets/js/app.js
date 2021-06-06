@@ -85,15 +85,47 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
     var label1;
     var label2;
   
-    if (chosenXAxis === "poverty" && chosenYAxis === "healthcare") {
-      label1 = "Poverty: ";
-      label2 = "Healthcare: "
+    if (chosenXAxis === "poverty") {
+        if(chosenYAxis === "healthcare"){
+            label1 = "Poverty: ";
+            label2 = "Healthcare: "
+        }
+        else if (chosenYAxis === "smokes"){
+            label1 = "Poverty: ";
+            label2 = "Smokes: "
+        }
+        else if (chosenYAxis === "obesity"){
+            label1 = "Poverty: ";
+            label2 = "Obesity: "
+        }
     }
     else if(chosenXAxis === "age"){
-      label1 = "Age:";
+        if(chosenYAxis === "healthcare"){
+            label1 = "Age: ";
+            label2 = "Healthcare: "
+        }
+        else if (chosenYAxis === "smokes"){
+            label1 = "Age: ";
+            label2 = "Smokes: "
+        }
+        else if (chosenYAxis === "obesity"){
+            label1 = "Age: ";
+            label2 = "Obesity: "
+        }
     }
     else if(chosenXAxis === "income"){
-        label1 = "Income:"
+        if(chosenYAxis === "healthcare"){
+            label1 = "Income: ";
+            label2 = "Healthcare: "
+        }
+        else if (chosenYAxis === "smokes"){
+            label1 = "Income: ";
+            label2 = "Smokes: "
+        }
+        else if (chosenYAxis === "obesity"){
+            label1 = "Income: ";
+            label2 = "Obesity: "
+        }
     }
   
     var toolTip = d3.tip()
