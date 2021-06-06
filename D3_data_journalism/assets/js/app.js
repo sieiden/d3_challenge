@@ -276,5 +276,5 @@ function makeResponsive(){
     });
 
 }
-
+makeResponsive();
 d3.select(window).on("resize", makeResponsive);
