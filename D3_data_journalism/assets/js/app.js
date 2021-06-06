@@ -1,7 +1,7 @@
 // I worked with Erin Wills (TA)
 // #######################  1.  Data Exploration  ################ //
 // CSV file shows that
-//  Data has following columns: id, state, abbr, poverty, povertyMoe, age, ageMoe, income, incomeMoe, healthcare, healthcareLow, healthcareHigh, ovesity, obesityLow, obesityHigh, smokes, smokesLow, smokesHigh
+//  Data has following columns: id, state, abbr, poverty, povertyMoe, age, ageMoe, income, incomeMoe, healthcare, healthcareLow, healthcareHigh, obesity, obesityLow, obesityHigh, smokes, smokesLow, smokesHigh
 //  Once read by d3.csv -> array of 51 objects as key-value pairs
 //  console.log(data) see below after d3.csv
 
