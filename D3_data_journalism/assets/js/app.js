@@ -68,7 +68,7 @@ function updateToolTip(chosenXAxis, circlesGroup) {
     }
   
     var toolTip = d3.tip()
-      .attr("class", "tooltip")
+      .attr("class", "d3-tip")
       .offset([80, -60])
       .html(function(d) {
         return (`${d.state}<br>${label} ${d[chosenXAxis]}`);
@@ -89,12 +89,12 @@ function updateToolTip(chosenXAxis, circlesGroup) {
   }
 
 //########################  3.  SVG Setup ###################################//
-function makeResponsive(){
-    var svgArea = d3.select("#scatter").select("svg");
+// function makeResponsive(){
+//     var svgArea = d3.select("#scatter").select("svg");
 
-    if (!svgArea.empty()) {
-        svgArea.remove();
-  }
+//     if (!svgArea.empty()) {
+//         svgArea.remove();
+//   }
     var svgWidth = 960;
     var svgHeight = 500;
 
@@ -197,14 +197,14 @@ function makeResponsive(){
         var povertyLabel = labelsGroup.append("text")
             .attr("x", 0)
             .attr("y", 20)
-            .attr("value", "age") // value to grab for event listener
+            .attr("value", "poverty") // value to grab for event listener
             .classed("active", true)
             .text("In Poverty (%)");
 
         var ageLabel = labelsGroup.append("text")
             .attr("x", 0)
             .attr("y", 40)
-            .attr("value", "healthcare") // value to grab for event listener
+            .attr("value", "age") // value to grab for event listener
             .classed("inactive", true)
             .text("Age (Median)");
 
@@ -275,6 +275,6 @@ function makeResponsive(){
     console.log(error);
     });
 
-}
-makeResponsive();
-d3.select(window).on("resize", makeResponsive);
+// }
+// makeResponsive();
+// d3.select(window).on("resize", makeResponsive);
