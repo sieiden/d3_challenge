@@ -6,7 +6,7 @@
 //  console.log(data) see below after d3.csv
 
 // #################### 2.  Define Function ###############//
-// function used for updating x-scale var upon click on axis label
+// function used for updating x-scale var upon click on x-axis label
 function xScale(data, chosenXAxis) {
     // create scales
     var xLinearScale = d3.scaleLinear()
@@ -18,9 +18,22 @@ function xScale(data, chosenXAxis) {
     return xLinearScale;
   
   }
+
+// function used for updating y-scale var upon click on y-axis label
+function yScale(data, chosenYAxis) {
+    // create scales
+    var yLinearScale = d3.scaleLinear()
+      .domain([d3.min(data, d => d[chosenYAxis]) * 0.8,
+        d3.max(data, d => d[chosenYAxis]) * 1.2
+      ])
+      .range([height, 0]);  //height defined at beginning of main code
+  
+    return yLinearScale;
+  
+  }
   
 // function used for updating xAxis var upon click on axis label
-function renderAxes(newXScale, xAxis) {
+function renderXAxes(newXScale, xAxis) {
     var bottomAxis = d3.axisBottom(newXScale);
   
     xAxis.transition()
@@ -30,7 +43,16 @@ function renderAxes(newXScale, xAxis) {
     return xAxis;
   }
 
-  //ADD FUNCTION TO UPDATE Y AXIS AS WELL
+// function used for updating yAxis var upon click on y-axis label
+function renderYAxes(newYScale, yAxis) {
+    var leftAxis = d3.axisLeft(newYScale);
+  
+    yAxis.transition()
+      .duration(1000)
+      .call(leftAxis);
+  
+    return yAxis;
+  }
 
 // function used for updating circles group with a transition to
 // new circles
@@ -133,6 +155,8 @@ d3.csv("assets/data/data.csv").then(function(healthData, err) {
         data.age = +data.age;
         data.income = +data.income;
         data.healthcare = +data.healthcare;
+        data.smokes = +data.smokes;
+        data.obesity = +data.obesity;
     });
 
 // Data Exploration (Section 1)
@@ -248,7 +272,7 @@ d3.csv("assets/data/data.csv").then(function(healthData, err) {
             xLinearScale = xScale(healthData, chosenXAxis);
 
             // updates x axis with transition
-            xAxis = renderAxes(xLinearScale, xAxis);
+            xAxis = renderXAxes(xLinearScale, xAxis);
         
             // updates circles with new x values
             circlesGroup = renderCircles(circlesGroup, xLinearScale, chosenXAxis);
